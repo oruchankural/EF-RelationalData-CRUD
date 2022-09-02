@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Test_Entities.Model
+@model List<Ticket>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Talep Kodu</th>
+            <th scope="col">Durum</th>
+            <th scope="col">Oluşturan</th>
+            <th scope="col">Destep Personeli</th>
+            <th scope="col">Anket Sorusu</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          
+            @foreach (var ticket in Model)
+            {
+                <th scope="row"></th>
+                <td>@ticket.TicketCode</td>
+                <td>@ticket.Process.ProcessDescription</td>
+                <td>@ticket.Sender.FullName</td> 
+                <td>@ticket.Receiver.FullName </td>
+                <td>@((ticket.Survey == null) ? "" : ticket.Survey.Message)</td>
+
+            }
+
+        </tr>
+
+    </tbody>
+</table>
